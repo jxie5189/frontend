@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; 
+import Navbar from './Layout/Navbar';
+import HomePage_Manager from './Pages/HomePage_Manager';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AddStaff from './Users/AddStaff';
+import EditStaff from './Users/EditStaff';
+import ViewStaff from './Users/ViewStaff';
+
+{/*these are Comments*/}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+
+      <Navbar /> 
+      <Routes>
+
+      {/*different url paths to each js. page element */}
+        <Route path="/" element={<HomePage_Manager />} />
+        <Route path="/addStaff" element= { <AddStaff />} />
+        <Route path="/editstaff/:id" element={<EditStaff />} />
+        <Route path='/viewstaff/:id' element={<ViewStaff />} />
+      </Routes>
+      
+      </Router>
+
+
+
     </div>
   );
 }
 
 export default App;
+
+
